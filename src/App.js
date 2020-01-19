@@ -4,9 +4,15 @@ import "./App.css";
 function App() {
   return (
     <div className="container">
+       <div className="header">
+          <h2 className="title_header">Verify Card (BINN/INN)</h2>
+        </div>
+
       <div className="content_wrapper">
+        <div className="close">x</div>
+
         <div className="card_input">
-          <input className="input" />
+          <input className="input" maxLength = "16"/>
           <span className="desc">
             Enter the first digits of a card number(BIN/IIN)
           </span>
@@ -35,10 +41,9 @@ function App() {
           </div>
 
           <div className="type">
-            <p className="light_dark title" >PREPAID</p>
+            <p className="light_dark title">PREPAID</p>
             <span className="card_value">YES/NO</span>
           </div>
-
         </div>
       </div>
     </div>
