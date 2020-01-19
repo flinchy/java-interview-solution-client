@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap');
+
 .container {
     display: flex;
     justify-content: center;
@@ -12,4 +14,28 @@
     width: 1000px;
     border: 1px solid red;
     height: 50%;
+}
+
+.card_input {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.input {
+    width: 70%;
+    height: 30px;
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: #21251f;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+}
+
+.input:focus {
+    outline: none;
+    border-bottom-color: #89ABE3FF;
 }

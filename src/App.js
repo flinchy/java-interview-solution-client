@@ -6,7 +6,9 @@ function App() {
     <div className="container">
       <div className="content_wrapper">
           This is the content wrapper area
-          <div className="card_input"></div>
+          <div className="card_input">
+            <input className="input"/>
+          </div>
       </div>
     </div>
   );
