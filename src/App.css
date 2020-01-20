@@ -23,8 +23,8 @@
 
 .input {
   margin: 0 auto;
-  width: 70%;
-  height: 30px;
+  width: 100%;
+  height: 40px;
   font-size: 1.5rem;
   font-weight: 100;
   color: #21251f;
@@ -36,7 +36,8 @@
 
 .input:focus {
   outline: none;
-  border-bottom-color: #89abe3ff;
+  border-bottom-color: #0366d6;
+  border-bottom: 1px solid #0366d6;;
 }
 
 .card_details__container {
@@ -67,6 +68,7 @@
   margin-bottom: 4rem;
   font-size: 3rem;
   text-align: center;
+  color: #0366d6;
 }
 
 .title {
@@ -83,13 +85,13 @@
 }
 
 .close {
-  transform: translate(2744%, 34%);
+  transform: translate(3119%, 34%);
   box-shadow: 0px 3px 6px #00000029;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   cursor: pointer;
   font-weight: 500;
-  color: #89abe3ff;
+  color: #000;
   text-align: center;
 }
