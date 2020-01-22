@@ -1,16 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap");
 
+body,
+html {
+  background: whitesmoke;
+}
+
 .container {
-  width: 1440px;
+  width: 80%;
   margin: 0 auto;
-  height: 100vh;
 }
 
 .content_wrapper {
   margin: 0 auto;
-  width: 800px;
-  transform: translate(0, 28%);
-  height: 50%;
+  width: 80%;
+  transform: translate(0, 0%);
+  height: 25%;
+  padding: 3rem 0;
 }
 
 .card_input {
@@ -24,7 +29,7 @@
 .input {
   margin: 0 auto;
   width: 100%;
-  height: 40px;
+  height: 43px;
   font-size: 1.5rem;
   font-weight: 100;
   color: #21251f;
@@ -32,12 +37,23 @@
   border-left: none;
   border-right: none;
   text-align: center;
+  border-bottom: 1px solid rgb(240, 239, 239);
+}
+
+.p-input {
+  height: 20px;
+}
+
+.p-input:focus {
+  outline: none;
+ 
 }
 
 .input:focus {
   outline: none;
   border-bottom-color: #0366d6;
-  border-bottom: 1px solid #0366d6;;
+  border-bottom: 1px solid #0366d6;
+  background-color: rgb(232, 240, 254);
 }
 
 .card_details__container {
@@ -62,13 +78,11 @@
   margin-top: 0.3rem;
 }
 
-
 .title_header {
   font-weight: 100;
   margin-bottom: 4rem;
   font-size: 3rem;
   text-align: center;
-  color: #0366d6;
 }
 
 .title {
@@ -78,6 +92,8 @@
 
 .card_value {
   font-weight: 100;
+  color: #4caf50;
+  font-size: 15px;
 }
 
 .light_dark {
@@ -85,7 +101,7 @@
 }
 
 .close {
-  transform: translate(3119%, 34%);
+  /* transform: translate(3119%, 34%); */
   box-shadow: 0px 3px 6px #00000029;
   width: 20px;
   height: 20px;
@@ -93,5 +109,75 @@
   cursor: pointer;
   font-weight: 500;
   color: #000;
+  text-align: center;
+  position: absolute;
+  right: 0;
+}
+
+.close:hover {
+  color: rgb(155, 41, 41);
+  background: whitesmoke;
+}
+
+.alert {
+  background-color: rgb(232, 240, 254);
+  text-align: center;
+  width: 500px;
+  padding: 1rem;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #ef617a;
+}
+
+.form-data {
+  position: relative;
+}
+
+/* BUTTON */
+
+.btn {
+  border-radius: 3px;
+  cursor: pointer;
+  height: 29px;
+}
+
+.btn:hover {
+  background: rgb(247, 247, 247);
+  opacity: 0.8;
+}
+
+.btn:active {
+  outline: none;
+
+}
+
+/* TABLE CSS  */
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: whitesmoke;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4caf50;
+  color: white;
   text-align: center;
 }
