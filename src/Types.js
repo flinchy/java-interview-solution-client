@@ -1,0 +1,8 @@
+export const VERIFY_CARD = 'VERIFY_CARD';
+export const GET_STATS = 'GET_STATS';
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const INVALID_CARD = 'INVALID_CARD';
+export const INVALID_PAGINATION = 'INVALID_VALIDATION';
+export const CLEAR = "CLEAR";
+export const REMOVE_INVALID_PAGINATION = "REMOVE_INVALID_PAGINATION";
