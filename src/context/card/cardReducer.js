@@ -4,7 +4,9 @@ import {
   GET_STATS,
   INVALID_PAGINATION,
   REMOVE_INVALID_PAGINATION,
-  CLEAR
+  CLEAR,
+  SET_LOADING,
+  SET_LOADING_FOR_STAT
 } from "../../Types";
 
 export default (state, action) => {
@@ -13,12 +15,14 @@ export default (state, action) => {
       return {
         ...state,
         cardData: action.payload,
-        error: null
+        error: null,
+        loading: false
       };
     case GET_STATS:
       return {
         ...state,
-        cardStats: action.payload
+        cardStats: action.payload,
+        loadingForStat: false
       };
     case CLEAR:
       return {
@@ -40,6 +44,17 @@ export default (state, action) => {
         ...state,
         statError: null
       };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+    case SET_LOADING_FOR_STAT:
+      return {
+        ...state,
+        loadingForStat: true,
+      };
+
     default:
       return state;
   }
