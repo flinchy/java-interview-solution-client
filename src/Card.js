@@ -1,81 +1,133 @@
-import React, { useState } from "react";
-import axios from 'axios';
+import React, { useState, useContext } from "react";
+import CardContext from "./context/card/cardContext";
+import AlertContext from "./context/alert/alertContext";
+
 import "./App.css";
 
 const Card = () => {
-  const [card, setCard] = useState("");
+  const [card, setCard] = useState({ cardNumber: "" });
+  const cardContext = useContext(CardContext);
+  const { verifyCard } = cardContext;
 
-  const handleSubmit = async e => {
-    // e.preventDefault();
-    const response = await axios.get(
-      "http://localhost:8080/card-scheme/verify/" + card
-    );
-    console.log(response);
-  };
+  const { cardNumber } = card;
+  const { cardData, error, clear } = cardContext;
+
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
 
   const handleChange = e => {
-    setCard(e.target.value);
-    if (card.length > 6) {
-      handleSubmit();
+    setCard({ ...card, [e.target.name]: e.target.value });
+
+    if (cardNumber.length >= 6) {
+      handleAutoVerify();
+    }
+
+    if (cardNumber.length > 8 && cardNumber.length <= 16) {
+      handleAutoVerify();
+    }
+
+    if (error !== null) {
+      clear();
+    }
+  };
+
+  const handleAutoVerify = () => {
+    verifyCard(cardNumber);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (cardNumber === "") {
+      setAlert("Please enter a card number", "dark");
+    } else {
+      verifyCard(cardNumber);
     }
   };
 
   const handleClick = () => {
-    setCard("");
+    setCard({ cardNumber: "" });
   };
 
   return (
     <div className="container">
       <div className="header">
-        <h2 className="title_header">Verify Card (BINN/INN)</h2>
+        <h2 className="title_header">Verify Card (BINN/IIN)</h2>
+
+        {cardData.success ? (
+          <h3
+            style={{
+              fontWeight: "100",
+              color: `${
+                cardData.success.toString() === "true" ? "green" : "red"
+              }`
+            }}
+          >
+            Success: &#10004; {cardData.success.toString()}
+          </h3>
+        ) : (
+          <h3 style={{ fontWeight: "100" }}>Success: ? </h3>
+        )}
       </div>
 
       <div className="content_wrapper">
-        <div className="close" onClick={handleClick}>
-          &#10008;
-        </div>
-
         <div className="card_input">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="form-data">
+            <div className="close" onClick={handleClick}>
+              &#10008;
+            </div>
+
             <input
               className="input"
               name="cardNumber"
-              value={card}
+              value={card.cardNumber}
               maxLength="16"
               onChange={handleChange}
             />
           </form>
 
-          <span className="desc">
-            Enter the first digits of a card number(BIN/IIN)
-          </span>
+          {error !== null ? (
+            <span className="desc" style={{ color: "red" }}>
+              {error}
+            </span>
+          ) : (
+            <span className="desc">
+              Enter the first 8 digits of a card number(BIN/IIN)
+            </span>
+          )}
         </div>
         <div className="card_details__container">
           <div className="scheme">
             <p className="light_dark title">SCHEME/NETWORK</p>
-            <span className="card_value">Visa</span>
+            {cardData.payload ? (
+              <span className="card_value">
+                {cardData.payload.scheme.toUpperCase()}
+              </span>
+            ) : (
+              <span style={{ color: "rgba(0, 0, 0, 0.4)" }}>?</span>
+            )}
           </div>
 
           <div className="type">
             <p className="light_dark title">TYPE</p>
-            <span className="card_value">Debit/Credit</span>
+            {cardData.payload ? (
+              <span className="card_value">
+                {cardData.payload.type.toUpperCase()}
+              </span>
+            ) : (
+              <span style={{ color: "rgba(0, 0, 0, 0.4)" }}>?</span>
+            )}
           </div>
 
           <div className="bank">
             <p className="light_dark title">BANK</p>
-            <span className="card_value">Jyske Bank, Hjörring</span>
-          </div>
-        </div>
-
-        <div className="card_details__container_two">
-          <div className="scheme">
-            <p className="light_dark title">BRAND</p>
-            <span className="card_value">Visa/Dankort</span>
-          </div>
-
-          <div className="type">
-            <p className="light_dark title">PREPAID</p>
-            <span className="card_value">YES/NO</span>
+            {cardData.payload ? (
+              <span className="card_value">
+                {cardData.payload.bank.toUpperCase()}
+              </span>
+            ) : (
+              <span style={{ color: "rgba(0, 0, 0, 0.4)" }}>?</span>
+            )}
           </div>
         </div>
       </div>
