@@ -38,7 +38,7 @@ html {
   margin: 0 auto;
   width: 100%;
   height: 43px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 100;
   color: #21251f;
   border-top: none;
@@ -100,7 +100,7 @@ html {
 .card_value {
   font-weight: 100;
   color: #4caf50;
-  font-size: 15px;
+  font-size: 1.5rem;
 }
 
 .light_dark {
