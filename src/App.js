@@ -11,13 +11,7 @@ function App() {
       <CardState>
         <AlertState>
           <Alert />
-          <div style={{
-            width: '85%',
-            margin: '4rem auto',
-            padding: '2rem 0',
-            boxShadow: '0px 3px 6px #00000029',
-            background: '#fff'
-          }}>
+          <div className="main">
             <Card />
             <NumberOfHits />
           </div>

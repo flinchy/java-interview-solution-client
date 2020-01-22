@@ -23,9 +23,9 @@ const Pagination = () => {
     getCardStats(start, limit);
   };
 
-  return (
+  return ( 
     <div>
-      <form style={paginate} onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-pagination">
         <p style={{ fontWeight: "100" }}>Pagination:</p>
         <p>
           Start:{" "}
@@ -53,14 +53,6 @@ const Pagination = () => {
       </form>
     </div>
   );
-};
-
-const paginate = {
-  width: "50%",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: 'center',
-  margin: "0 auto"
 };
 
 
