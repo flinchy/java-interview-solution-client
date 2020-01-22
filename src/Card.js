@@ -1,13 +1,14 @@
 import React, { useState, useContext } from "react";
 import CardContext from "./context/card/cardContext";
 import AlertContext from "./context/alert/alertContext";
+import Spinner from "./pages/Spinner";
 
 import "./App.css";
 
 const Card = () => {
   const [card, setCard] = useState({ cardNumber: "" });
   const cardContext = useContext(CardContext);
-  const { verifyCard } = cardContext;
+  const { verifyCard, loading } = cardContext;
 
   const { cardNumber } = card;
   const { cardData, error, clear } = cardContext;
@@ -48,6 +49,8 @@ const Card = () => {
   const handleClick = () => {
     setCard({ cardNumber: "" });
   };
+
+  if (loading) return <Spinner />;
 
   return (
     <div className="container">

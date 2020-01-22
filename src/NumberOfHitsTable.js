@@ -1,9 +1,10 @@
 import React, { useContext, Fragment } from "react";
 import CardContext from "./context/card/cardContext";
+import Spinner from "./pages/Spinner";
 
 export const NumberOfHitsTable = () => {
   const cardContext = useContext(CardContext);
-  const { cardStats, statError } = cardContext;
+  const { cardStats, statError, loadingForStat } = cardContext;
 
   let keys = null;
   let values = null;
@@ -14,10 +15,22 @@ export const NumberOfHitsTable = () => {
     values = Object.values(cardStats.payload);
     size = cardStats.size;
   }
- 
+
+  if (statError && loadingForStat) {
+    return <Spinner />;
+  }
+
+  if(statError && loadingForStat) {
+    return null;
+  }
+
   return (
     <Fragment>
-      {size && <div style={{color: '#4caf50', fontWeight: '600'}}>Size: overall number of hits is {size}</div>}
+      {size && (
+        <div style={{ color: "#4caf50", fontWeight: "600" }}>
+          Size: overall number of hits is {size}
+        </div>
+      )}
 
       <table id="customers">
         <thead>
