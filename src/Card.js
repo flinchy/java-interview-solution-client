@@ -52,7 +52,8 @@ const Card = () => {
     setCard({ cardNumber: "" });
   };
 
-  if (loading) return <Spinner />;
+ 
+  if(loading && !error) return <Spinner />
 
   return (
     <div className="container">
