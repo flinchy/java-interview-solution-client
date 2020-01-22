@@ -19,28 +19,30 @@ const Card = () => {
   const handleChange = e => {
     setCard({ ...card, [e.target.name]: e.target.value });
 
-    if (cardNumber.length >= 6) {
-      handleAutoVerify();
-    }
+    // if (cardNumber.length >= 6) {
+    //   handleAutoVerify();
+    // }
 
-    if (cardNumber.length > 8 && cardNumber.length <= 16) {
-      handleAutoVerify();
-    }
+    // if (cardNumber.length > 8 && cardNumber.length <= 16) {
+    //   handleAutoVerify();
+    // }
 
     if (error !== null) {
       clear();
     }
   };
 
-  const handleAutoVerify = () => {
-    verifyCard(cardNumber);
-  };
+  // const handleAutoVerify = () => {
+  //   verifyCard(cardNumber);
+  // };
 
   const handleSubmit = e => {
     e.preventDefault();
 
     if (cardNumber === "") {
       setAlert("Please enter a card number", "dark");
+    } else if (cardNumber.length > 8 && cardNumber.length <= 16) {
+      verifyCard(cardNumber);
     } else {
       verifyCard(cardNumber);
     }
