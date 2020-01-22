@@ -45,7 +45,7 @@ html {
   border-left: none;
   border-right: none;
   text-align: center;
-  border-bottom: 1px solid rgb(240, 239, 239);
+  border-bottom: 1px solid #d4d3d3;
 }
 
 .p-input {
