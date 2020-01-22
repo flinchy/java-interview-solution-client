@@ -9,7 +9,9 @@ import {
   INVALID_PAGINATION,
   GET_STATS,
   CLEAR,
-  REMOVE_INVALID_PAGINATION
+  REMOVE_INVALID_PAGINATION,
+  SET_LOADING,
+  SET_LOADING_FOR_STAT
 } from "../../Types";
 
 const VerifyCardState = props => {
@@ -17,17 +19,20 @@ const VerifyCardState = props => {
     cardData: {},
     cardStats: null,
     error: null,
-    statError: null
+    statError: null,
+    loading: false,
+    loadingForStat: false
   };
 
   const [state, dispatch] = useReducer(CardReducer, initialState);
 
   const verifyCard = async card => {
     // e.preventDefault();
+    setLoading();
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/card-scheme/verify/` + card
+        `https://chisom-verifier.herokuapp.com/card-scheme/verify/` + card
       );
 
       dispatch({
@@ -45,9 +50,11 @@ const VerifyCardState = props => {
   };
 
   const getCardStats = async (start, limit) => {
+    setLoadingForStat();
+
     try {
       const response = await axios.get(
-        `http://localhost:8080/card-scheme/stats?start=${start}&limit=${limit}`
+        `https://chisom-verifier.herokuapp.com/card-scheme/stats?start=${start}&limit=${limit}`
       );
       dispatch({
         type: GET_STATS,
@@ -65,6 +72,10 @@ const VerifyCardState = props => {
     }
   };
 
+  const setLoading = () => dispatch({ type: SET_LOADING });
+
+  const setLoadingForStat = () => dispatch({ type: SET_LOADING_FOR_STAT});
+
   const clear = () => {
     dispatch({ type: CLEAR });
   };
@@ -76,9 +87,13 @@ const VerifyCardState = props => {
         cardStats: state.cardStats,
         statError: state.statError,
         error: state.error,
+        loading: state.loading,
+        loadingForStat: state.loadingForStat,
         verifyCard,
         getCardStats,
-        clear
+        clear,
+        setLoading,
+        setLoadingForStat
       }}
     >
       {props.children}
