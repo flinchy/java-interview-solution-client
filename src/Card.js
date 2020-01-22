@@ -101,7 +101,9 @@ const Card = () => {
             <p className="light_dark title">SCHEME/NETWORK</p>
             {cardData.payload ? (
               <span className="card_value">
-                {cardData.payload.scheme.toUpperCase()}
+                {cardData.payload.scheme !== null
+                  ? cardData.payload.scheme.toUpperCase()
+                  : "?"}
               </span>
             ) : (
               <span style={{ color: "rgba(0, 0, 0, 0.4)" }}>?</span>
@@ -112,7 +114,9 @@ const Card = () => {
             <p className="light_dark title">TYPE</p>
             {cardData.payload ? (
               <span className="card_value">
-                {cardData.payload.type.toUpperCase()}
+                {cardData.payload.type !== null
+                  ? cardData.payload.type.toUpperCase()
+                  : "?"}
               </span>
             ) : (
               <span style={{ color: "rgba(0, 0, 0, 0.4)" }}>?</span>
@@ -123,7 +127,9 @@ const Card = () => {
             <p className="light_dark title">BANK</p>
             {cardData.payload ? (
               <span className="card_value">
-                {cardData.payload.bank.toUpperCase()}
+                {cardData.payload.bank !== null
+                  ? cardData.payload.bank.toUpperCase()
+                  : "?"}
               </span>
             ) : (
               <span style={{ color: "rgba(0, 0, 0, 0.4)" }}>?</span>
