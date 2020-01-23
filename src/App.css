@@ -216,6 +216,10 @@ html {
     width: 100%;
   }
 
+  .container {
+    width: 95%;
+  }
+
   .title_header {
     font-size: 2rem;
   }
@@ -236,10 +240,25 @@ html {
   }
 
   .numberOfHits {
-    width: 100%;
+    width: 95%;
     font-size: 13px;
   }
   .hit-title {
     font-size: 1.5rem;
+  }
+
+  .form-pagination {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+  }
+
+  .btn {
+    margin-bottom: .5rem;
+    background-color:#fff;
+    
+  }
+  .p-input {
+    border: 1px solid rgb(223, 223, 223);
   }
 }
