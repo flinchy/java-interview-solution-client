@@ -75,6 +75,7 @@ const Card = () => {
               value={card.cardNumber}
               maxLength="16"
               onChange={handleChange}
+              autoFocus
             />
           </form>
 

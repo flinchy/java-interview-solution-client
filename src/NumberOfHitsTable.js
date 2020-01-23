@@ -18,8 +18,8 @@ export const NumberOfHitsTable = () => {
   return (
     <Fragment>
       {size && (
-        <div style={{ color: "#4caf50", fontWeight: "600" }}>
-          Size: overall number of hits is {size}
+        <div style={{ color: "#4caf50", fontWeight: "600", fontSize: "18px" }}>
+          Size: overall number of hits is : {size}
         </div>
       )}
 
