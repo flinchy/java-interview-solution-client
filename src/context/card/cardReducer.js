@@ -6,7 +6,8 @@ import {
   REMOVE_INVALID_PAGINATION,
   CLEAR,
   SET_LOADING,
-  SET_LOADING_FOR_STAT
+  SET_LOADING_FOR_STAT,
+  CLOSE
 } from "../../Types";
 
 export default (state, action) => {
@@ -37,7 +38,8 @@ export default (state, action) => {
     case INVALID_PAGINATION:
       return {
         ...state,
-        statError: action.payload
+        statError: action.payload,
+        loadingForStat: false
       };
     case REMOVE_INVALID_PAGINATION:
       return {
@@ -52,7 +54,14 @@ export default (state, action) => {
     case SET_LOADING_FOR_STAT:
       return {
         ...state,
-        loadingForStat: true,
+        loadingForStat: true
+      };
+    case CLOSE:
+      return {
+        ...state,
+        error: null,
+        cardData: {},
+        loading: false
       };
 
     default:

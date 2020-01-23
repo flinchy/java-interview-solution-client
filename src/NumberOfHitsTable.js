@@ -1,10 +1,9 @@
 import React, { useContext, Fragment } from "react";
 import CardContext from "./context/card/cardContext";
-import Spinner from "./pages/Spinner";
 
 export const NumberOfHitsTable = () => {
   const cardContext = useContext(CardContext);
-  const { cardStats, statError, loadingForStat } = cardContext;
+  const { cardStats, statError } = cardContext;
 
   let keys = null;
   let values = null;
@@ -14,14 +13,6 @@ export const NumberOfHitsTable = () => {
     keys = Object.keys(cardStats.payload);
     values = Object.values(cardStats.payload);
     size = cardStats.size;
-  }
-
-  if (statError && loadingForStat) {
-    return <Spinner />;
-  }
-
-  if(statError && loadingForStat) {
-    return null;
   }
 
   return (

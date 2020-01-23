@@ -1,15 +1,17 @@
 import React, { useState, useContext } from "react";
 import CardContext from "./context/card/cardContext";
+import Spinner from "./pages/Spinner";
 
 const Pagination = () => {
   const cardContext = useContext(CardContext);
 
-  const { getCardStats } = cardContext;
+  const { getCardStats, loadingForStat } = cardContext;
 
   const [state, setState] = useState({
     start: "",
     limit: ""
   });
+ 
 
   const { start, limit } = state;
 
@@ -49,6 +51,7 @@ const Pagination = () => {
             onChange={handleChange}
           />
         </p>
+        {loadingForStat && <Spinner />}
         <button className="btn">Get Statistics</button>
       </form>
     </div>

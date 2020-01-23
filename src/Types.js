@@ -8,3 +8,4 @@ export const CLEAR = "CLEAR";
 export const REMOVE_INVALID_PAGINATION = "REMOVE_INVALID_PAGINATION";
 export const SET_LOADING = 'SET_LOADING';
 export const SET_LOADING_FOR_STAT = "SET_LOADING_FOR_STAT";
+export const CLOSE = "CLOSE";

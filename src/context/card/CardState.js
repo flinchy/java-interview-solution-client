@@ -11,7 +11,8 @@ import {
   CLEAR,
   REMOVE_INVALID_PAGINATION,
   SET_LOADING,
-  SET_LOADING_FOR_STAT
+  SET_LOADING_FOR_STAT,
+  CLOSE
 } from "../../Types";
 
 const VerifyCardState = props => {
@@ -21,7 +22,7 @@ const VerifyCardState = props => {
     error: null,
     statError: null,
     loading: false,
-    loadingForStat: false
+    loadingForStat: false,
   };
 
   const [state, dispatch] = useReducer(CardReducer, initialState);
@@ -74,11 +75,13 @@ const VerifyCardState = props => {
 
   const setLoading = () => dispatch({ type: SET_LOADING });
 
-  const setLoadingForStat = () => dispatch({ type: SET_LOADING_FOR_STAT});
+  const setLoadingForStat = () => dispatch({ type: SET_LOADING_FOR_STAT });
 
   const clear = () => {
     dispatch({ type: CLEAR });
   };
+
+  const handleClose = () => dispatch({type: CLOSE});
 
   return (
     <CardContext.Provider
@@ -93,7 +96,8 @@ const VerifyCardState = props => {
         getCardStats,
         clear,
         setLoading,
-        setLoadingForStat
+        setLoadingForStat,
+        handleClose
       }}
     >
       {props.children}

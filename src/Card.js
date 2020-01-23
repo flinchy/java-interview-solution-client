@@ -8,7 +8,7 @@ import "./App.css";
 const Card = () => {
   const [card, setCard] = useState({ cardNumber: "" });
   const cardContext = useContext(CardContext);
-  const { verifyCard, loading } = cardContext;
+  const { verifyCard, loading, handleClose } = cardContext;
 
   const { cardNumber } = card;
   const { cardData, error, clear } = cardContext;
@@ -19,22 +19,10 @@ const Card = () => {
   const handleChange = e => {
     setCard({ ...card, [e.target.name]: e.target.value });
 
-    // if (cardNumber.length >= 6) {
-    //   handleAutoVerify();
-    // }
-
-    // if (cardNumber.length > 8 && cardNumber.length <= 16) {
-    //   handleAutoVerify();
-    // }
-
     if (error !== null) {
       clear();
     }
   };
-
-  // const handleAutoVerify = () => {
-  //   verifyCard(cardNumber);
-  // };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -50,10 +38,8 @@ const Card = () => {
 
   const handleClick = () => {
     setCard({ cardNumber: "" });
+    handleClose();
   };
-
- 
-  if(loading && !error) return <Spinner />
 
   return (
     <div className="container">
@@ -79,10 +65,10 @@ const Card = () => {
       <div className="content_wrapper">
         <div className="card_input">
           <form onSubmit={handleSubmit} className="form-data">
-            <div className="close" onClick={handleClick}>
+            <div className="close" onClick={handleClick} title="clear all">
               &#10008;
             </div>
-
+            {loading && !error ? <Spinner /> : ""}
             <input
               className="input"
               name="cardNumber"
