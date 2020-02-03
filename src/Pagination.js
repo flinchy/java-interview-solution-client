@@ -11,7 +11,6 @@ const Pagination = () => {
     start: "",
     limit: ""
   });
- 
 
   const { start, limit } = state;
 
@@ -25,14 +24,14 @@ const Pagination = () => {
     getCardStats(start, limit);
   };
 
-  return ( 
+  return (
     <div>
       <form onSubmit={handleSubmit} className="form-pagination">
         <p style={{ fontWeight: "100" }}>Pagination:</p>
         <p>
           Start:{" "}
           <input
-          className="p-input"
+            className="p-input"
             name="start"
             placeholder="Enter start here"
             type="number"
@@ -43,7 +42,7 @@ const Pagination = () => {
         <p>
           Limit:{" "}
           <input
-          className="p-input"
+            className="p-input"
             name="limit"
             placeholder="Enter limit here"
             type="number"
@@ -57,6 +56,5 @@ const Pagination = () => {
     </div>
   );
 };
-
 
 export default Pagination;
