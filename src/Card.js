@@ -44,7 +44,7 @@ const Card = () => {
   return (
     <div className="container">
       <div className="header">
-        <p>A card verification application</p>
+        <p style={{color: '#0366d6'}}>A card verification application</p>
         <h2 className="title_header">Verify Card (BINN/IIN)</h2>
 
         {cardData.success ? (
